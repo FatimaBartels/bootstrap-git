@@ -4,10 +4,146 @@
 
 @import "./node_modules/bootstrap/scss/bootstrap";
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css");
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300&family=Lato:wght@300&family=Nunito+Sans&display=swap');
 
 //extra custom code plaats je onder het inladen, bv.:
-body {
-  background-color: hotpink;
+
+body{
+  margin: 0;
 }
 
 // wil je Bootstrap niet volledig inladen maar slechts de Sass partials en JS bestanden die je nodig hebt, ziehier hoe je dat kan doen https://getbootstrap.com/docs/5.0/customize/optimize/
+
+
+$text-color: white;
+$title-color: #1A385A;
+$font-family-title: 'Barlow', sans-serif;
+$font-weight-text: bolder;
+$font-family-text:'Lato', sans-serif;
+
+
+@mixin background-text() {
+  background-color: #E8AA9B;
+  padding: 15px;
+  color:$text-color;
+  font-family: $font-family-text;
+}
+
+@mixin custom-styleText() {
+  font-family:$font-family-title;
+  color: $text-color;
+  font-weight: $font-weight-text;
+
+}
+
+@mixin title-Style() {
+ color:$title-color;
+ font-family: $font-family-title;
+ font-weight: $font-weight-text;
+
+}
+
+nav { 
+  .navbar-brand {
+    @include custom-styleText;
+  } 
+ .nav-link {
+   @include custom-styleText;
+   &:hover {
+     color: $title-color;
+   }
+ }  
+@include background-text;
+}
+
+
+.header-image {
+	position: relative;
+}
+
+.headerText {
+  font-size: 30px;
+	text-align: center;
+	position: absolute;
+	top: 50%;
+	left: 50%; 
+	transform: translate(-50%, -50%);
+  @include custom-styleText;
+}
+
+@media screen and (min-width: 320px) {
+  .headerText {
+    font-size: calc(30px + 6 * ((100vw - 320px) / 680));
+  }
+}
+@media screen and (min-width: 1000px) {
+  .headerText {
+    font-size: 80px;
+  }
+}
+
+
+.imgheader{
+height: auto;
+width:100%;
+}
+
+img {
+  width: auto;
+  height: auto;
+}
+
+#home {
+  text-align: center;
+  @include title-Style;
+  margin: 50px 0px 30px 0px;
+
+}
+
+.intro-text{
+  font-size: 22px;
+  text-align: center;
+  color:#474647;
+  font-family: $font-family-text;
+  margin-bottom: 30px;
+}
+
+.description {
+  color:#474647;
+  margin: 20px 0px 20px 0px;
+  font-family: $font-family-text;
+  
+}
+
+.card {
+  color: #E8AA9B;
+  padding: 20px;
+  box-shadow: 0 4px 8px 0 rgba(250, 140, 140, 0.589), 0 6px 20px 0 rgba(248, 150, 150, 0.534);
+}
+
+.title-text {
+  margin-top: 30px;
+  text-align: center;
+  @include title-Style;
+}
+
+#contact {
+ @include title-Style;
+ text-align: center;
+
+}
+
+form {
+  font-family: $font-family-text;
+}
+
+
+footer{
+  ul{
+    list-style-type: none;
+  }
+  h5{
+    @include title-Style;
+  }
+  @include background-text;  
+}
